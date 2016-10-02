@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ApplicationRoot.qml</file>
+        <file>components/Battery.qml</file>
+        <file>components/BatteryMeter.qml</file>
+        <file>components/gamepad/ButtonImage.qml</file>
+        <file>components/gamepad/JoystickViewer.qml</file>
+        <file>components/gamepad/DPad.qml</file>
+        <file>components/gamepad/LeftThumbstick.qml</file>
+        <file>components/gamepad/RightThumbstick.qml</file>
+        <file>components/gamepad/xboxControllerBack.png</file>
+        <file>components/gamepad/xboxControllerButtonA.png</file>
+        <file>components/gamepad/xboxControllerButtonB.png</file>
+        <file>components/gamepad/xboxControllerButtonGuide.png</file>
+        <file>components/gamepad/xboxControllerButtonX.png</file>
+        <file>components/gamepad/xboxControllerButtonY.png</file>
+        <file>components/gamepad/xboxControllerDPad.png</file>
+        <file>components/gamepad/xboxControllerLeftShoulder.png</file>
+        <file>components/gamepad/xboxControllerLeftThumbstick.png</file>
+        <file>components/gamepad/xboxControllerLeftTrigger.png</file>
+        <file>components/gamepad/xboxControllerRightShoulder.png</file>
+        <file>components/gamepad/xboxControllerRightThumbstick.png</file>
+        <file>components/gamepad/xboxControllerRightTrigger.png</file>
+        <file>components/gamepad/xboxControllerStart.png</file>
+        <file>components/gamepad/XboxController.qml</file>
+        <file>components/needle.png</file>
+        <file>components/VelocityMeter.qml</file>
+        <file>components/AngularVelocityMeter.qml</file>
+        <file>components/AngleMeter.qml</file>
+    </qresource>
+</RCC>
