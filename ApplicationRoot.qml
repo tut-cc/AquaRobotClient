@@ -34,7 +34,7 @@ ApplicationWindow {
             id: vzMeter
             width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
             height: width
-            anchors.top: vxMeter.bottom
+            anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             label: "vz"
             value: AquaRobot.vz
@@ -44,7 +44,7 @@ ApplicationWindow {
             id: avyMeter
             width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
             height: width
-            anchors.top: vzMeter.bottom
+            anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             label: "avy"
             value: AquaRobot.avy
@@ -168,7 +168,7 @@ ApplicationWindow {
             id: rollMeter
             width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
             height: width
-            anchors.top: pitchMeter.bottom
+            anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             minimumValueAngle: -180.0
             maximumValueAngle: 180.0
@@ -180,7 +180,7 @@ ApplicationWindow {
             id: yawMeter
             width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
             height: width
-            anchors.top: rollMeter.bottom
+            anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             minimumValueAngle: -180.0
             maximumValueAngle: 180.0
