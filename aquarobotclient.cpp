@@ -149,15 +149,19 @@ void AquaRobotClient::setAvyOrder(double av){
 }
 
 // 水中ロボットとの通信を開始
-// 引数：url 水中ロボットへのurlを格納したQUrl
-void AquaRobotClient::open(const QUrl &url){
-    writeLog(QString("%1(): 水中ロボット（%2）との接続処理開始").arg(__FUNCTION__, m_webSocket.requestUrl().toString(QUrl::RemoveScheme)));
+// 引数：host 水中ロボットのホスト名, port ポート番号
+void AquaRobotClient::open(const QString &host, int port){
+    QUrl url;
+    url.setScheme("ws"); // URIのスキームをWebSocketに設定
+    url.setHost(host);
+    url.setPort(port);
+    writeLog(QString("%1(): 水中ロボット（%2）との接続処理開始").arg(__FUNCTION__, url.toString(QUrl::None)));
 
     // 接続時に急に動き出さないように緊急停止モードを有効化して各指令値も0に
     setEmergencyMode(true);
 
     writeLog(QString("%1(): WebSocketのオープン").arg(__FUNCTION__));
-    m_webSocket.open(QUrl(url));
+    m_webSocket.open(url);
 }
 
 // 水中ロボットとの通信を切断

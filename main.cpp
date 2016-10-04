@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 
     QQmlApplicationEngine appEngine;
     AquaRobotClient client;
-    client.open(QUrl(QStringLiteral("ws://localhost:1234"))); // ここで水中ロボットのアドレスとポートを指定
+    client.open("localhost", 1234); // ここで水中ロボットのアドレスとポートを指定
     appEngine.rootContext()->setContextProperty("AquaRobot", &client); // QMLからclientオブジェクトが参照できるようにする
     appEngine.load(QUrl("qrc:/ApplicationRoot.qml")); // QMLの読み込み
 

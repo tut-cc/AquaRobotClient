@@ -54,7 +54,7 @@ public:
     void setAvyOrder(double av);
 
 public slots:
-    void open(const QUrl &url);
+    void open(const QString &host, int port);
     void close();
     Q_INVOKABLE void setEmergencyMode(bool mode); // Q_INVOKABLEでQMLからも呼び出せるように
     void writeLog(const QString &str);
