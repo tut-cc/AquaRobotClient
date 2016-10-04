@@ -15,15 +15,15 @@ ApplicationWindow {
 
     Item{ // 左
         id: leftPane
-        width: 300
-        height: 900
+        width: (parent.width - centralPane.width) / 2
+        height: parent.height
         anchors.top: parent.top
         anchors.left: parent.left
 
         VelocityMeter{ // vxメーター
             id: vxMeter
-            width: 300
-            height: 300
+            width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
+            height: width
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
             label: "vx"
@@ -32,8 +32,8 @@ ApplicationWindow {
 
         VelocityMeter{ // vzメーター
             id: vzMeter
-            width: 300
-            height: 300
+            width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
+            height: width
             anchors.top: vxMeter.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             label: "vz"
@@ -42,8 +42,8 @@ ApplicationWindow {
 
         AngularVelocityMeter{
             id: avyMeter
-            width: 300
-            height: 300
+            width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
+            height: width
             anchors.top: vzMeter.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             label: "avy"
@@ -53,8 +53,8 @@ ApplicationWindow {
 
     Item{ // 中央
         id: centralPane
-        width: 600
-        height: 900
+        width: cameraStream.width
+        height: parent.height
         anchors.left: leftPane.right
         anchors.top: parent.top
 
@@ -73,15 +73,15 @@ ApplicationWindow {
 
         Item{ // 通信、バッテリなどの状態を表示するバー
             id: statusBar
-            width: 600
+            width: parent.width
             height: 20
             anchors.top: cameraStream.bottom
             anchors.horizontalCenter: parent.horizontalCenter
 
             Rectangle{ // 接続状態の表示
                 id: connectStatus
-                width: 200
-                height: 16
+                width: parent.width / 3
+                height: parent.height - 4
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
                 anchors.margins: 2 // マージン（余白）
@@ -97,8 +97,8 @@ ApplicationWindow {
             }
             BatteryMeter{
                 id: batteryMeter
-                width: 200
-                height: 16
+                width: parent.width / 3
+                height: parent.height - 4
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: connectStatus.right
                 anchors.margins: 2
@@ -106,8 +106,8 @@ ApplicationWindow {
             }
             Rectangle{
                 id: emergencyModeState
-                width: 200
-                height: 16
+                width: parent.width / 3
+                height: parent.height - 4
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: batteryMeter.right
                 anchors.margins: 2
@@ -125,8 +125,8 @@ ApplicationWindow {
 
         XboxController{ // ボタン割り当ての表示
             id: xboxController
-            width: 600
-            height: 400
+            width: parent.width
+            height: parent.height - (cameraStream.height + statusBar.height)
             anchors.top: statusBar.bottom
             anchors.horizontalCenter: parent.horizontalCenter
 
@@ -147,15 +147,15 @@ ApplicationWindow {
 
     Item{ // 右
         id: rightPane
-        width: 300
-        height: 900
+        width: (parent.width - centralPane.width) / 2
+        height: parent.height
         anchors.left: centralPane.right
         anchors.top: parent.top
 
         AngleMeter{ // 角度（傾き）メーター ピッチ
             id: pitchMeter
-            width: 300
-            height: 300
+            width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
+            height: width
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
             minimumValueAngle: -270.0 // 最小値が表示される位置
@@ -166,8 +166,8 @@ ApplicationWindow {
 
         AngleMeter{ // ロールメーター
             id: rollMeter
-            width: 300
-            height: 300
+            width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
+            height: width
             anchors.top: pitchMeter.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             minimumValueAngle: -180.0
@@ -178,8 +178,8 @@ ApplicationWindow {
 
         AngleMeter{ // ヨーメーター
             id: yawMeter
-            width: 300
-            height: 300
+            width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
+            height: width
             anchors.top: rollMeter.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             minimumValueAngle: -180.0
