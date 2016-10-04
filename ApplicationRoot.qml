@@ -12,6 +12,7 @@ ApplicationWindow {
     visible: true // ApplicationWindowは標準では非表示状態になっている
     width: 1200
     height: 900
+    color: "black"
 
     Item{ // 左
         id: leftPane
