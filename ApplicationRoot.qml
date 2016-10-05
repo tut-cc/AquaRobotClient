@@ -3,7 +3,6 @@ import QtQuick.Controls 1.2 // ボタンやチェックボックスなど、基�
 import QtQuick 2.5 // 基本的な型など
 import QtWebEngine 1.2 // webブラウザ
 import QtQuick.Extras 1.4 // サークルゲージ
-import QtQuick.Dialogs 1.2
 import "components" // 自作の部品など
 import "components/gamepad"
 
@@ -32,7 +31,6 @@ ApplicationWindow {
             radius: 10
             Column{
                 Text{
-
                     text: "水中ロボットと接続"
                     font.pixelSize: 30
                 }
@@ -80,9 +78,6 @@ ApplicationWindow {
                     }
                 }
             }
-
-
-
         }
     }
 
