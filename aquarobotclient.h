@@ -58,9 +58,9 @@ public:
     void setAvyOrder(double av);
 
 public slots:
-    void open(const QString &host, int port);
+    Q_INVOKABLE void open(const QString &host, int port); // Q_INVOKABLEでQMLからも呼び出せるように
     void close();
-    Q_INVOKABLE void setEmergencyMode(bool mode); // Q_INVOKABLEでQMLからも呼び出せるように
+    Q_INVOKABLE void setEmergencyMode(bool mode);
     void writeLog(const QString &str);
     void onBinaryMessageReceived(const QByteArray &data);
     void sendCommand();

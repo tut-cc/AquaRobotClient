@@ -3,6 +3,7 @@ import QtQuick.Controls 1.2 // ボタンやチェックボックスなど、基�
 import QtQuick 2.5 // 基本的な型など
 import QtWebEngine 1.2 // webブラウザ
 import QtQuick.Extras 1.4 // サークルゲージ
+import QtQuick.Dialogs 1.2
 import "components" // 自作の部品など
 import "components/gamepad"
 
@@ -13,6 +14,77 @@ ApplicationWindow {
     width: 1200
     height: 900
     color: "black"
+
+    Item{ // 水中ロボット接続ダイアログ
+        anchors.fill: parent
+        id: connectDialog
+        z: 10 // アイテムどうしが重なっている場合、値が大きいものが上に表示される デフォルトは0なのでこれが一番上のアイテムとして表示される
+        Rectangle{ // ウィンドウ全体に半透明の黒い覆いをかける
+            anchors.fill: parent
+            color: "black"
+            opacity: 0.7 // 半透明
+        }
+        Rectangle{
+            anchors.centerIn: parent
+            color: "white"
+            width: 400
+            height: 200
+            radius: 10
+            Column{
+                Text{
+
+                    text: "水中ロボットと接続"
+                    font.pixelSize: 30
+                }
+
+                Grid{
+                    columns: 2 // 一行に表示するアイテム数
+                    Text{
+                        text: "ホスト名："
+                        font.pixelSize: 20
+                    }
+                    TextField{
+                        id: hostInput
+                        height: 20
+                    }
+                    Text{
+                        text: "カメラポート："
+                        font.pixelSize: 20
+                    }
+                    TextField{
+                        id: cameraPortInput
+                        height: 20
+                    }
+                    Text{
+                        text: "WebSocketポート："
+                        font.pixelSize: 20
+                    }
+                    TextField{
+                        id: wsPortInput
+                        height: 20
+                    }
+                }
+                Row{
+                    Button{
+                        text: "接続"
+                        onClicked: {
+                            connectDialog.visible = false
+                            AquaRobot.open(hostInput.text, wsPortInput.text)
+                        }
+                    }
+                    Button{
+                        text: "キャンセル"
+                        onClicked: {
+                            connectDialog.visible = false
+                        }
+                    }
+                }
+            }
+
+
+
+        }
+    }
 
     Item{ // 左
         id: leftPane
@@ -67,7 +139,7 @@ ApplicationWindow {
             anchors.horizontalCenter: parent.horizontalCenter
 
             WebEngineView{ // webブラウザでmjpg_streamerからの動画を表示
-                url: "http://" + AquaRobot.host
+                url: "http://www.tut.ac.jp/" // 本当はraspiからのストリーミングアドレスにするべき
                 anchors.fill: parent // 親と同じサイズ・位置を持つ
             }
         }
