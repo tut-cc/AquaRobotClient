@@ -68,6 +68,8 @@ ApplicationWindow {
                         onClicked: {
                             connectDialog.visible = false
                             AquaRobot.open(hostInput.text, wsPortInput.text)
+                            cameraStream.host = hostInput.text
+                            cameraStream.port = cameraPortInput.text
                         }
                     }
                     Button{
@@ -132,9 +134,11 @@ ApplicationWindow {
             height: 480
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
+            property string host: ""
+            property int port: 0
 
             WebEngineView{ // webブラウザでmjpg_streamerからの動画を表示
-                url: "http://www.tut.ac.jp/" // 本当はraspiからのストリーミングアドレスにするべき
+                url: "http://" + parent.host + ":" + parent.port
                 anchors.fill: parent // 親と同じサイズ・位置を持つ
             }
         }
