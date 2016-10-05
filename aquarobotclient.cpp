@@ -42,6 +42,17 @@ bool AquaRobotClient::isEmergencyMode(){
     return m_emergencyMode;
 }
 
+// 現在接続中の水中ロボットのホスト名を返す
+// 接続していなければ空の文字列を返す…はず
+QString AquaRobotClient::host(){
+    return m_webSocket.requestUrl().host();
+}
+
+// 返り値：現在接続中の水中ロボットのポート番号
+int AquaRobotClient::port(){
+    return m_webSocket.requestUrl().port();
+}
+
 // 返り値：x軸速度[m/s]
 double AquaRobotClient::vx(){
     return m_vx;

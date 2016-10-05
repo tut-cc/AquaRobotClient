@@ -67,7 +67,7 @@ ApplicationWindow {
             anchors.horizontalCenter: parent.horizontalCenter
 
             WebEngineView{ // webブラウザでmjpg_streamerからの動画を表示
-                url: "http://www.tut.ac.jp/" // 本当はraspiからのストリーミングアドレスにするべき
+                url: "http://" + AquaRobot.host
                 anchors.fill: parent // 親と同じサイズ・位置を持つ
             }
         }
@@ -91,7 +91,7 @@ ApplicationWindow {
                 Text{
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
-                    text: "Connection: " + AquaRobot.isConnected
+                    text: AquaRobot.host + ":" + AquaRobot.port + " " + (AquaRobot.isConnected ? "○" : "×")
                     color: "white"
                     font.pixelSize: parent.height
                 }

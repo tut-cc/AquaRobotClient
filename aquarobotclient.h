@@ -12,6 +12,8 @@ class AquaRobotClient : public QObject
     Q_OBJECT // Qt関連のオブジェクトで必須のマクロ privateのとこで宣言する必要あり
     Q_PROPERTY(bool isConnected READ isConnected NOTIFY stateChanged)
     Q_PROPERTY(bool isEmergencyMode READ isEmergencyMode NOTIFY dataUpdated)
+    Q_PROPERTY(QString host READ host NOTIFY stateChanged)
+    Q_PROPERTY(int port READ port NOTIFY stateChanged)
     Q_PROPERTY(double vx READ vx NOTIFY dataUpdated) // QMLからオブジェクトの要素を呼び出せるようにするためのマクロ
     Q_PROPERTY(double vy READ vy NOTIFY dataUpdated)
     Q_PROPERTY(double vz READ vz NOTIFY dataUpdated)
@@ -33,6 +35,8 @@ public:
     ~AquaRobotClient();
     bool isConnected();
     bool isEmergencyMode();
+    QString host();
+    int port();
     double vx();
     double vy();
     double vz();
