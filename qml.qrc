@@ -27,5 +27,7 @@
         <file>components/VelocityMeter.qml</file>
         <file>components/AngularVelocityMeter.qml</file>
         <file>components/AngleMeter.qml</file>
+        <file>components/error.png</file>
+        <file>components/ok.png</file>
     </qresource>
 </RCC>

@@ -159,12 +159,20 @@ ApplicationWindow {
                 anchors.margins: 2 // マージン（余白）
                 color: "black"
 
-                Text{
-                    anchors.left: parent.left
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: AquaRobot.host + ":" + AquaRobot.port + " " + (AquaRobot.isConnected ? "○" : "×")
-                    color: "white"
-                    font.pixelSize: parent.height
+                Row{
+                    Image{
+                        width: 16;
+                        height: 16;
+                        source: AquaRobot.isConnected ? "components/ok.png" : "components/error.png"
+                    }
+
+                    Text{
+                       // anchors.left: parent.left
+                        //anchors.verticalCenter: parent.verticalCenter
+                        text: AquaRobot.host + ":" + AquaRobot.port + " "
+                        color: "white"
+                        font.pixelSize: 16
+                    }
                 }
             }
             BatteryMeter{
