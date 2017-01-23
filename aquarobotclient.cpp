@@ -15,13 +15,13 @@ AquaRobotClient::AquaRobotClient(QObject *parent) : QObject(parent)
         std::cout << "In " << __FILE__ << ": Line " << __LINE__ << ": " << "ログファイルのオープンに失敗" << std::endl; // それぞれのマクロはソースのファイル名、行数に置き換わる
     m_logFileStream.setDevice(&m_logFile); // ファイルストリームをオープン
 
-    m_timer.setInterval(100); // 命令送信間隔[milisec]の設定
+    m_timer.setInterval(500); // 命令送信間隔[milisec]の設定
     m_timer.stop(); // タイマを一応停止
     m_timer.setSingleShot(false); // タイマが一度タイムアウトしても再び開始するように設定
     connect(&m_timer, &QTimer::timeout, this, &AquaRobotClient::sendCommand); // タイマがタイムアウトする度に命令を送信
     connect(&m_webSocket, &QWebSocket::connected, this, &AquaRobotClient::onConnected);
     connect(&m_webSocket, &QWebSocket::disconnected, this, &AquaRobotClient::onDisconnected);
-    connect(&m_webSocket, &QWebSocket::binaryMessageReceived, this, &AquaRobotClient::onTextMessageReceived);
+    connect(&m_webSocket, &QWebSocket::textMessageReceived, this, &AquaRobotClient::onTextMessageReceived);
 }
 
 // デストラクタ
