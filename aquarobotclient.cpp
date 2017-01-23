@@ -21,7 +21,7 @@ AquaRobotClient::AquaRobotClient(QObject *parent) : QObject(parent)
     connect(&m_timer, &QTimer::timeout, this, &AquaRobotClient::sendCommand); // タイマがタイムアウトする度に命令を送信
     connect(&m_webSocket, &QWebSocket::connected, this, &AquaRobotClient::onConnected);
     connect(&m_webSocket, &QWebSocket::disconnected, this, &AquaRobotClient::onDisconnected);
-    connect(&m_webSocket, &QWebSocket::binaryMessageReceived, this, &AquaRobotClient::onBinaryMessageReceived);
+    connect(&m_webSocket, &QWebSocket::binaryMessageReceived, this, &AquaRobotClient::onTextMessageReceived);
 }
 
 // デストラクタ
@@ -205,11 +205,11 @@ void AquaRobotClient::writeLog(const QString &str){
 }
 
 // 水中ロボットからJsonデータを受信した際に呼ばれるスロット
-void AquaRobotClient::onBinaryMessageReceived(const QByteArray &data)
+void AquaRobotClient::onTextMessageReceived(const QString &data)
 {
     QJsonDocument jsonDoc; // Jsonをオブジェクトに変換するためのオブジェクト
     QJsonObject jsonData; // Jsonデータを格納するためのオブジェクト
-    jsonDoc = QJsonDocument::fromJson(data); // 受信したバイト列をJsonファイルとして読み込み
+    jsonDoc = QJsonDocument::fromJson(data.toLocal8Bit()); // 受信したバイト列をJsonファイルとして読み込み
     jsonData = jsonDoc.object(); // Json内の値を直接操作できるオブジェクトに変換
 
     m_emergencyMode = jsonData["emergencyMode"].toBool();

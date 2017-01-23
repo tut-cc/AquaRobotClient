@@ -138,7 +138,7 @@ ApplicationWindow {
             property int port: 0
 
             WebEngineView{ // webブラウザでmjpg_streamerからの動画を表示
-                url: "http://" + parent.host + ":" + parent.port
+                url: "http://" + parent.host + ":" + parent.port + "/stream_simple.html"
                 anchors.fill: parent // 親と同じサイズ・位置を持つ
             }
         }

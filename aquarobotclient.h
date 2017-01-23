@@ -62,7 +62,7 @@ public slots:
     void close();
     Q_INVOKABLE void setEmergencyMode(bool mode);
     void writeLog(const QString &str);
-    void onBinaryMessageReceived(const QByteArray &data);
+    void onTextMessageReceived(const QString &data);
     void sendCommand();
     void onConnected();
     void onDisconnected();
