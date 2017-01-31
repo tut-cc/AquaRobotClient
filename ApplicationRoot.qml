@@ -97,34 +97,34 @@ ApplicationWindow {
         anchors.top: parent.top
         anchors.left: parent.left
 
-        VelocityMeter{ // vxメーター
-            id: vxMeter
+        AngularVelocityMeter{ // x軸角加速度
+            id: avxMeter
             width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
             height: width
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
-            label: "vx"
-            value: AquaRobot.vx
+            label: "avx"
+            value: AquaRobot.avx
         }
 
-        VelocityMeter{ // vzメーター
-            id: vzMeter
+        AngularVelocityMeter{ // y軸角加速度
+            id: avyMeter
             width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
             height: width
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
-            label: "vz"
-            value: AquaRobot.vz
+            label: "avy"
+            value: AquaRobot.avy
         }
 
-        AngularVelocityMeter{
-            id: avyMeter
+        AngularVelocityMeter{ // z軸角加速度
+            id: avzMeter
             width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
             height: width
             anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
-            label: "avy"
-            value: AquaRobot.avy
+            label: "avz"
+            value: AquaRobot.avz
         }
     }
 
