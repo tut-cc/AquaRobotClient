@@ -11,11 +11,12 @@ QT_USE_NAMESPACE
 AquaRobotClient::AquaRobotClient(QObject *parent) : QObject(parent)
 {
     m_logFile.setFileName(QDateTime::currentDateTime().toString("yyyy-MM-dd_HH-mm-ss") + ".log"); // ログファイルの名前を年-月-日_時-分-秒.logとする
+
     if(!(m_logFile.open(QIODevice::WriteOnly | QIODevice::Text))) // 書き込みモードでファイルを開く
         std::cout << "In " << __FILE__ << ": Line " << __LINE__ << ": " << "ログファイルのオープンに失敗" << std::endl; // それぞれのマクロはソースのファイル名、行数に置き換わる
     m_logFileStream.setDevice(&m_logFile); // ファイルストリームをオープン
 
-    m_timer.setInterval(500); // 命令送信間隔[milisec]の設定
+    m_timer.setInterval(SEND_INTERVAL_MILISEC); // 命令送信間隔[milisec]の設定
     m_timer.stop(); // タイマを一応停止
     m_timer.setSingleShot(false); // タイマが一度タイムアウトしても再び開始するように設定
     connect(&m_timer, &QTimer::timeout, this, &AquaRobotClient::sendCommand); // タイマがタイムアウトする度に命令を送信

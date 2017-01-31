@@ -57,6 +57,8 @@ public:
     void setVzOrder(double v);
     void setAvyOrder(double av);
 
+    const int SEND_INTERVAL_MILISEC = 100;
+
 public slots:
     Q_INVOKABLE void open(const QString &host, int port); // Q_INVOKABLEでQMLからも呼び出せるように
     void close();
