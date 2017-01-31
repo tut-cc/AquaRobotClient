@@ -14,6 +14,10 @@ ApplicationWindow {
     height: 900
     color: "black"
 
+    property int webSocketPort: 8080 // デフォルトのwebSocketポート
+    property int cameraPort: 8081    // デフォルトの動画ストリーミングポート
+    property string serverHost: "192.168.1.1" // サーバのホスト
+
     Item{ // 水中ロボット接続ダイアログ
         anchors.fill: parent
         id: connectDialog
@@ -43,6 +47,7 @@ ApplicationWindow {
                     }
                     TextField{
                         id: hostInput
+                        text: serverHost
                         height: 20
                     }
                     Text{
@@ -51,6 +56,7 @@ ApplicationWindow {
                     }
                     TextField{
                         id: cameraPortInput
+                        text: cameraPort
                         height: 20
                     }
                     Text{
@@ -59,6 +65,7 @@ ApplicationWindow {
                     }
                     TextField{
                         id: wsPortInput
+                        text: webSocketPort
                         height: 20
                     }
                 }
