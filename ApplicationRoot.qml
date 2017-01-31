@@ -227,8 +227,9 @@ ApplicationWindow {
             }
             gamepad.onButtonL1Changed: AquaRobot.vzOrder = value ? -1.0 : 0
             gamepad.onButtonR1Changed: AquaRobot.vzOrder = value ? 1.0 : 0
-            gamepad.onAxisLeftYChanged: AquaRobot.vxOrder = value * -5.0
-            gamepad.onAxisRightXChanged: AquaRobot.avyOrder = value * 50
+            // スティックを触っていなくてもある程度の値が検出されてしまうので、絶対値が閾値以下は0とする
+            gamepad.onAxisLeftYChanged: AquaRobot.vxOrder = (value < 0.20 && value > -0.20) ? 0 : (value * -5.0)
+            gamepad.onAxisRightXChanged: AquaRobot.avyOrder = (value < 0.20 && value > -0.20) ? 0 : value * 50
         }
     }
 
