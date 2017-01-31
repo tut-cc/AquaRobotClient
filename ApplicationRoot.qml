@@ -239,40 +239,34 @@ ApplicationWindow {
         anchors.left: centralPane.right
         anchors.top: parent.top
 
-        AngleMeter{ // 角度（傾き）メーター ピッチ
-            id: pitchMeter
+        AccelerationMeter{ // x軸加速度
+            id: axMeter
             width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
             height: width
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
-            minimumValueAngle: -270.0 // 最小値が表示される位置
-            maximumValueAngle: 90.0 // 最大値が表示される位置
-            label: "Pitch" // メーター中央部に表示されるテキスト
-            value: AquaRobot.pitch // ここで指定された値がメーターで示される
+            label: "ax" // メーター中央部に表示されるテキスト
+            value: AquaRobot.ax // ここで指定された値がメーターで示される
         }
 
-        AngleMeter{ // ロールメーター
-            id: rollMeter
+        AccelerationMeter{ // y軸加速度
+            id: ayMeter
             width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
             height: width
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
-            minimumValueAngle: -180.0
-            maximumValueAngle: 180.0
-            label: "Roll"
-            value: AquaRobot.roll
+            label: "ay"
+            value: AquaRobot.ay
         }
 
-        AngleMeter{ // ヨーメーター
-            id: yawMeter
+        AccelerationMeter{ // z軸加速度
+            id: azMeter
             width: parent.width < parent.height / 3 ? parent.width : parent.height / 3
             height: width
             anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
-            minimumValueAngle: -180.0
-            maximumValueAngle: 180.0
-            label: "Yaw"
-            value: AquaRobot.yaw
+            label: "az"
+            value: AquaRobot.az
         }
     }
 }
