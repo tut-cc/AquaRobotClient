@@ -168,8 +168,8 @@ ApplicationWindow {
 
                 Row{
                     Image{
-                        width: 16;
-                        height: 16;
+                        width: connectStatus.height;
+                        height: connectStatus.height;
                         source: AquaRobot.isConnected ? "components/ok.png" : "components/error.png"
                     }
 
@@ -178,7 +178,17 @@ ApplicationWindow {
                         //anchors.verticalCenter: parent.verticalCenter
                         text: AquaRobot.host + ":" + AquaRobot.port + " "
                         color: "white"
-                        font.pixelSize: 16
+                        font.pixelSize: connectStatus.height
+                    }
+
+                    Button{
+                        text: "再接続"
+                        onClicked: {
+                            connectDialog.visible = true
+                            AquaRobot.close()
+                        }
+                        height: connectStatus.height
+                        visible: !(AquaRobot.isConnected)
                     }
                 }
             }
