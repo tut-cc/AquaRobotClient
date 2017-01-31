@@ -29,5 +29,6 @@
         <file>components/AngleMeter.qml</file>
         <file>components/error.png</file>
         <file>components/ok.png</file>
+        <file>components/AccelerationMeter.qml</file>
     </qresource>
 </RCC>
