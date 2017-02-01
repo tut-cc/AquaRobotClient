@@ -10,8 +10,8 @@ ApplicationWindow {
     id: window
     title: "水中ロボット：コントローラ"
     visible: true // ApplicationWindowは標準では非表示状態になっている
-    width: 1200
-    height: 900
+    width: 1024
+    height: 700
     color: "black"
 
     property int webSocketPort: 8080 // デフォルトのwebSocketポート

@@ -59,6 +59,8 @@ Item {
 
         ButtonImage { // Lボタン
             id: buttonL1
+            width: xboxController.width / 3
+            height: xboxController.height / 4
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.topMargin: 8
@@ -77,8 +79,8 @@ Item {
 
         ButtonImage { // Xboxボタン
             id: xboxButton
-            width: 100
-            height: 100
+            width: xboxController.height / 3
+            height: width
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             source: "xboxControllerButtonGuide.png"
@@ -95,6 +97,8 @@ Item {
 
         ButtonImage { // Rボタン
             id: buttonR1
+            width: xboxController.width / 3
+            height: xboxController.height / 4
             anchors.right: parent.right
             anchors.top: parent.top
             anchors.topMargin: 8
@@ -112,6 +116,8 @@ Item {
 
         ButtonImage {
             id: buttonA
+            width: xboxController.height / 5
+            height: width
             x: parent.width / 3 * 2 + width / 2
             y: parent.height / 2 - height / 2
             source: "xboxControllerButtonA.png";
@@ -127,6 +133,8 @@ Item {
         }
 
         RightThumbstick {
+            width: xboxController.height / 3
+            height: width
             x: parent.width / 4 * 3 - width / 2
             y: parent.height - height
             id: rightThumbstick
@@ -142,9 +150,11 @@ Item {
         }
 
         LeftThumbstick { // 左スティック
+            id: leftThumbstick
+            width: xboxController.height / 3
+            height: width
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
-            id: leftThumbstick
             gamepad: xboxController.gamepad
             Text {
                 anchors.verticalCenter: parent.verticalCenter
