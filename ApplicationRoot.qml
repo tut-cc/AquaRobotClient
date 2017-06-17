@@ -16,7 +16,7 @@ ApplicationWindow {
 
     property int webSocketPort: 8080 // デフォルトのwebSocketポート
     property int cameraPort: 8081    // デフォルトの動画ストリーミングポート
-    property string serverHost: "192.168.1.1" // サーバのホスト
+    property string serverHost: "192.168.1.2" // サーバのホスト
 
     Item{ // 水中ロボット接続ダイアログ
         anchors.fill: parent
